@@ -20,7 +20,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-20 md:pt-24">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-[#C8860A]/10 border border-[#C8860A]/30 rounded-full px-5 py-2 mb-8">
           <Star size={14} className="text-[#C8860A] fill-[#C8860A]" />

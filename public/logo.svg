@@ -1,0 +1,24 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="96" fill="#F2C96E" stroke="#2D1A0A" stroke-width="3"/>
+  <circle cx="100" cy="100" r="89" fill="none" stroke="#2D1A0A" stroke-width="1.5"/>
+
+  <!-- Brownie square with bite taken from top-right -->
+  <path d="M55,38 L140,38 Q142,38 142,40 L142,48 Q148,44 152,42 Q154,46 150,52 Q154,54 156,58 L156,110 Q156,112 154,112 L55,112 Q53,112 53,110 L53,40 Q53,38 55,38 Z"
+        fill="none" stroke="#2D1A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Bite marks on top-right -->
+  <path d="M140,38 Q148,44 152,42 Q154,46 150,52 Q154,54 156,58"
+        fill="none" stroke="#2D1A0A" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+  <!-- Text: The -->
+  <text x="100" y="67" font-family="Georgia, serif" font-size="14" fill="#2D1A0A" text-anchor="middle" font-style="italic">The</text>
+  <!-- Text: Brownie -->
+  <text x="100" y="85" font-family="Georgia, serif" font-size="18" fill="#2D1A0A" text-anchor="middle" font-weight="bold">Brownie</text>
+  <!-- Text: Club -->
+  <text x="100" y="104" font-family="Georgia, serif" font-size="18" fill="#2D1A0A" text-anchor="middle" font-weight="bold">Club</text>
+
+  <!-- Bottom text -->
+  <text x="100" y="136" font-family="Arial, sans-serif" font-size="9.5" fill="#2D1A0A" text-anchor="middle">Membership requirement:</text>
+  <text x="100" y="152" font-family="Arial, sans-serif" font-size="10" fill="#2D1A0A" text-anchor="middle" font-weight="bold">Love brownies.</text>
+</svg>

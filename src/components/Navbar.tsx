@@ -1,7 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ShoppingBag } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -14,6 +16,7 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { count, setOpen: openCart } = useCart();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -27,12 +30,14 @@ export function Navbar() {
         scrolled ? 'bg-[#0D0500]/95 backdrop-blur-md shadow-lg shadow-amber-900/20' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">🍫</span>
-          <span className="text-xl font-bold gradient-text tracking-wide">The Brownie Club</span>
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/logo.svg" alt="The Brownie Club" width={48} height={48} className="rounded-full" />
+          <span className="text-lg font-bold gradient-text tracking-wide hidden sm:block">The Brownie Club</span>
         </Link>
 
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <Link
@@ -43,19 +48,28 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link
-            href="/order"
-            className="bg-[#C8860A] hover:bg-[#E8A020] text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 flex items-center gap-2"
-          >
-            <ShoppingBag size={16} /> Order
-          </Link>
         </div>
 
-        <button className="md:hidden text-[#FDF6EC]" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Cart + Mobile menu */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => openCart(true)}
+            className="relative w-10 h-10 rounded-full bg-[#C8860A]/20 hover:bg-[#C8860A]/40 flex items-center justify-center transition-colors"
+          >
+            <ShoppingBag size={18} className="text-[#C8860A]" />
+            {count > 0 && (
+              <span className="absolute -top-1 -right-1 bg-[#C8860A] text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                {count > 9 ? '9+' : count}
+              </span>
+            )}
+          </button>
+          <button className="md:hidden text-[#FDF6EC]" onClick={() => setOpen(!open)}>
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
+      {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-[#1A0A00]/98 backdrop-blur-md border-t border-[#C8860A]/20 px-6 py-6 flex flex-col gap-4">
           {links.map((l) => (
